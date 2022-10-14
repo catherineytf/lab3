@@ -1,21 +1,25 @@
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
 public class ListTests {
+    @Test
     public void testFilter(){
        StringChecker ls = new LongString();
-       List<String> input = new ArrayList<>();
+       ArrayList<String> input = new ArrayList<>();
        input.add("apple");
        input.add("banana");
+       input.add("pear");
        input.add("strawberry");
-       List<String> expected = new ArrayList<>();
-       String[] e = new String[]{"banana","strawberry"};
+       input.add("blackberry");
+       ArrayList<String> expected = new ArrayList<>();
        expected.add("banana");
        expected.add("strawberry");
-       List<String> result = ListExamples.filter(input, ls);
-       assertArrayEquals(e,ListExamples.toArray(result));
-
-
+       expected.add("blackberry");
+       assertEquals(expected,ListExamples.filter(input, ls));
     }
     
 }
