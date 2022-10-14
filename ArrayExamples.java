@@ -3,12 +3,12 @@
 public class ArrayExamples {
 
   // Changes the input array to be in reversed order
-  static int[] reverseInPlace(int[] arr) {
-    int[] newArray = new int[arr.length];
-    for(int i = 0; i < arr.length; i += 1) {
-      newArray[i] = arr[arr.length - i - 1];
+  static void reverseInPlace(int[] arr) {
+    for(int i = 0; i < arr.length/2; i += 1) {
+      int copy = arr[i];
+      arr[i] = arr[arr.length - i - 1];
+      arr[arr.length - i - 1] = copy;
     }
-    return newArray;
   }
 
   // Returns a *new* array with all the elements of the input array in reversed
@@ -18,7 +18,7 @@ public class ArrayExamples {
     for(int i = 0; i < arr.length; i += 1) {
       arr[i] = newArray[arr.length - i - 1];
     }
-    return arr;
+    return newArray;
   }
 
   // Averages the numbers in the array (takes the mean), but leaves out the
@@ -31,10 +31,15 @@ public class ArrayExamples {
       if(num < lowest) { lowest = num; }
     }
     double sum = 0;
+    int count = 0;
     for(double num: arr) {
-      if(num != lowest) { sum += num; }
+      if(num != lowest) {
+      sum += num; }
+      if(num == lowest){
+        count += 1;
+      }
     }
-    return sum / (arr.length - 1);
+    return sum / (arr.length - count);
   }
 
 
